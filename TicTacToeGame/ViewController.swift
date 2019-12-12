@@ -24,9 +24,7 @@ let winningCombinations = [
     
     @IBOutlet weak var gameInfoLabel: UILabel!
        
-    var turnCount = 0
     @IBAction func action(_ sender: AnyObject) {
-        turnCount += 1
         if (gameState[sender.tag - 1] == 0  && gameIsActive == true)
         {
             gameState[sender.tag - 1] = activePlayer
@@ -60,21 +58,26 @@ let winningCombinations = [
                 }
             }
         }
-            if gameIsActive && turnCount == 9
-            {
-               gameInfoLabel.text = "IT'S A DRAW!"
+        
+        var count = 1
+        
+        if gameIsActive == true {
+            for i in gameState {
+                count = i * count
+            }
+            if count != 0 {
                 gameIsActive = false
+                gameInfoLabel.text = "IT WAS A DRAW"
                 gameInfoLabel.isHidden = false
                 resetGameButton.isHidden = false
+            }
         }
         
     }
 
      @IBOutlet weak var resetGameButton: UIButton!
      @IBAction func resetGame(_ sender: AnyObject) {
-        
-        turnCount = 0
-        
+                
         gameState = [0, 0, 0,
                      0, 0, 0,
                      0, 0, 0]
