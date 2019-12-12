@@ -73,6 +73,8 @@ let winningCombinations = [
      @IBOutlet weak var resetGameButton: UIButton!
      @IBAction func resetGame(_ sender: AnyObject) {
         
+        turnCount = 0
+        
         gameState = [0, 0, 0,
                      0, 0, 0,
                      0, 0, 0]
